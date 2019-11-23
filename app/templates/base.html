@@ -1,3 +1,5 @@
+{% extends 'bootstrap/base'%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,16 +48,15 @@
     <!-- navbar -->
     <ul>
         <li><a href="">PitchApp</a></li>
-        
-        <li><a class="active" href="/">Home</a></li>
+        <li><a class="active" href="#home">Home</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
-        {% if current_user.is_authenticated%}
-        <li style="color:white;padding: 15px;">{{current_user.username}}</li>
-        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
-        {% else%}
-        <li><a href="{{url_for('auth.login')}}">Sign In</a></li>
-        {% endif%}
+        <li><a href="">Sign in</a></li>
+        <li><a href="">Sign out</a></li>
+        
       </ul>
+      {% block content%}
+      {% endblock%}
 </body>
+
 </html>
