@@ -1,8 +1,10 @@
+import os
+
 class Config:
     '''
     general configuration of parent class
     '''
-
+    SECRET_KEY ='dm/01254'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://dan:12345@localhost/pitch'
     pass
 
