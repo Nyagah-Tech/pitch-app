@@ -2,7 +2,7 @@ from flask import render_template,abort
 from . import main
 from flask_login import login_required
 from ..models import User
-from .forms uimport UpdateProfile
+from .forms import UpdateProfile
 from .. import db
 
 
@@ -27,7 +27,7 @@ def profile(uname):
 @main.route('/user/<uname>/update', methods = ['GET','POST'])
 @login_required
 def update_profile(uname):
-    user = User.query.filter_by(username = uname).,first()
+    user = User.query.filter_by(username = uname).first()
     if user is None:
         abort(404)
     form = UpdateProfile()

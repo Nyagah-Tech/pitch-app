@@ -43,25 +43,33 @@
     </style>
 </head>
 <body>
-    <!-- navbar -->
-    <div class="nav">
-        <ul>
-            <li><a href="">PitchApp</a></li>
-            
-            <li><a class="active" href="/">Home</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
-            {% if current_user.is_authenticated%}
-            <li style="color:black;padding: 15px;">{{current_user.username}}</li>
-            <li> <a href="{{url_for('main.profile',uname = current_user.username)}}">Profile</a> </li>
-            <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
-            {% else%}
-            <li><a href="{{url_for('auth.login')}}">Sign In</a></li>
-            {% endif%}
-        </ul>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="nav">
+                <ul>
+                    <li><a href="">PitchApp</a></li>
+                    
+                    <li><a class="active" href="/">Home</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                    {% if current_user.is_authenticated%}
+                    <li style="color:black;padding: 15px;">{{current_user.username}}</li>
+                    <li> <a href="{{url_for('main.profile',uname = current_user.username)}}">Profile</a> </li>
+                    <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                    {% else%}
+                    <li><a href="{{url_for('auth.login')}}">Sign In</a></li>
+                    {% endif%}
+                </ul>
+                
         
-
+            </div>
+        </div>
+        <div class="col-md-8">
+            <a href=""></a>
+        </div>
     </div>
+    <!-- navbar -->
+   
     
 </body>
 </html>
