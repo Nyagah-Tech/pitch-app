@@ -15,8 +15,7 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_path = db.Column(db.String())
     pass_code_secure = db.Column(db.String(255))
-
-    pitch = db.relationship('Pitch',backrefc=c'user',lazy = "dynamic")
+    
 
     @property
     def password(self):
@@ -36,16 +35,16 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-class Pitch(db.model):
+class Pitch(db.Model):
     __tablename__ = 'pitch'
 
     id = db.Column(db.Integer,primary_key = True)
     pitch_title = db.Column(db.String(255))
     pitch_body = db.Column(db.String(255))
-    posted = db.Column(db.Datetime,default = datetime.utcnow)
+    posted = db.Column(db.DateTime,default = datetime.utcnow)
     user = db.Column(db.String(255))
     category = db.Column(db.String(255))
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    
 
     def save_pitch(self):
         db.session.add(self)
@@ -55,3 +54,9 @@ class Pitch(db.model):
         pitches = Pitch.query.filter_by(user = name).all()
 
         return pitches
+
+    @classmethod
+    def get_all_pitch():
+        pitch_list = Pitch.select * from pitch
+        
+        return pitch_list

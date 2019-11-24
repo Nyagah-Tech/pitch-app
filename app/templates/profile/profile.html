@@ -29,6 +29,29 @@
         {% if user == current_user%}
             <a href=" {{url_for('main.update_profile',uname = user.username)}}">Edit profile</a>
         {% endif%}
+
+        <center><p>pitches</p></center>
+        <div class="row">
+            {% if pitch%}
+                {% for pit in pitch%}
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-title">
+                                {{pit.pitch_title}}
+                            </div>
+                            <div class="card-body">
+                                {{pit.pitch_body}}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor%}
+            {% else%}
+                <h3> your have no pitches of your own</h3>
+                <a href="/pitch/new/{{current_user.username}}">write a pitch</a>
+            {% endif%}
+        </div>
+       
+                
     </div>
 </body>
 </html>
