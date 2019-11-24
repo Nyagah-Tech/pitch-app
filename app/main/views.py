@@ -1,8 +1,8 @@
-from flask import render_template,abort
+from flask import render_template,abort,redirect,url_for
 from . import main
-from flask_login import login_required
+from flask_login import login_required, current_user
 from ..models import User
-from .forms import UpdateProfile
+from .forms import UpdateProfile,NewPitch
 from .. import db
 
 
@@ -40,3 +40,19 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname = user.username))
     
     return render_template('profile/update.html',form = form)
+
+@main.route('/pitch/new/<uname>', methods = ['GET','POST'])
+@login_required
+def new_pitch(uname):
+    form = NewPitch()
+    if form.validate_on submit():
+        title = form.title.data
+        pitch = form.body.data
+        category = form.category.data
+
+        new_pitch = pitch(pitch_title = title,pitch_body = pitch,category = category,user = current_user.username )
+
+        new_pitch.save_pitch()
+        return redirect(url_for('.profile',uname = current_user.username))
+    title="create new pitch"
+    return render_template('new_pitch.html',title = title,pitch_form = form,)
