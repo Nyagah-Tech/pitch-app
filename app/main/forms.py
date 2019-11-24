@@ -13,3 +13,7 @@ class NewPitch(FlaskForm):
     body = TextAreaField('write the pitch',validators = [Required()])
     category = StringField('input category, Business,Sport,Religious,Educational',validators = [Required()])
     submit = SubmitField('Submit')
+
+class CommentForm(FlaskForm):
+    comment = TextAreaField('write a comment', validators=[Required()])
+    submit = SubmitField('Submit')

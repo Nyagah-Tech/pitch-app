@@ -11,7 +11,9 @@ def index():
 
     title= "home"
 
-    return render_template("index.html", title=title)
+    pitches = Pitch.get_all_pitch()
+
+    return render_template("index.html", title=title,pitches = pitches)
 
 
 @main.route('/user/<uname>')

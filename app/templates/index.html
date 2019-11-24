@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href=" {{url_for('static',filename='css/index.css')}} ">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
     <title>pitch</title>
 
     <style>
@@ -67,7 +68,22 @@
             </div>
         </div>
         <div class="col-md-9">
-            
+            <div class="row">
+                {% for pitch in pitches %}
+                    <div class="col-md 4">
+                        <div class="card">
+                            <div class="card-body">
+                                <p> {{pitch.pitch_body}} </p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="">Write a comment</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                {% endfor%}
+            </div>
+           
         </div>
     </div>
     <!-- navbar -->
