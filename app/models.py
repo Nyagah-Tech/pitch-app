@@ -16,6 +16,8 @@ class User(UserMixin,db.Model):
     profile_path = db.Column(db.String())
     pass_code_secure = db.Column(db.String(255))
 
+    pitch = db.relationship('Pitch',backrefc=c'user',lazy = "dynamic")
+
     @property
     def password(self):
         raise AttributeError('you cannot read the password attribute')
@@ -38,6 +40,12 @@ class Pitch(db.model):
     __tablename__ = 'pitch'
 
     id = db.Column(db.Integer,primary_key = True)
+    pitch_title = db.Column(db.String(255))
     pitch_body = db.Column(db.String(255))
     posted = db.Column(db.Datetime,default = datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+        
