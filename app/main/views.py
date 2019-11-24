@@ -1,7 +1,7 @@
 from flask import render_template,abort,redirect,url_for
 from . import main
 from flask_login import login_required, current_user
-from ..models import User,Pitch
+from ..models import User,Pitch,Comment
 from .forms import UpdateProfile,NewPitch
 from .. import db
 
@@ -61,3 +61,27 @@ def new_pitch(uname):
         return redirect(url_for('.profile',uname = current_user.username))
     title="create new pitch"
     return render_template('new_pitch.html',title = title,pitch_form = form,user = user)
+
+@main.route('/pitch/comment/new/<int:id>', methods = ['GET','POST'])
+@login_required
+def new_comment(id):
+    pitch = Pitch.query.filter_by(id = id ).first()
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = form.comment.data
+
+        new_comment = Comment(pitch_id = pitch.id, comment = comment, user = current_user.username)
+
+        new_comment.save_comment()
+        return redirect(url_for('.pitch',id = pitch.id))
+
+    title = f'{pitch.title} comment'
+    return render_template('comment.html',title = title, comment_form = form,pitch = pitch)
+
+@main.route('/pitch/<id>')
+@login_required
+def pitch(id):
+    pitch = Pitch.query.filter_by(id = id).first()
+
+    comment = Comment.get_pitch_comment(id)
+    return render_template('pitch.html',pitch = pitch, comment = comment)

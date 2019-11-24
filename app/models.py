@@ -70,12 +70,12 @@ class Comment(db.Model):
     comment = db.Column(db.String(255))
     user = db.Column(db.String(255))
 
-    def save_pitch(self):
+    def save_comment(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
     def get_pitch_comment(cls,id):
         comment = Comment.query.filter_by(pitch_id = id)
-        
+
         return comment
