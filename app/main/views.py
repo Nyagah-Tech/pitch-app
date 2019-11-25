@@ -2,7 +2,7 @@ from flask import render_template,abort,redirect,url_for
 from . import main
 from flask_login import login_required, current_user
 from ..models import User,Pitch,Comment
-from .forms import UpdateProfile,NewPitch
+from .forms import UpdateProfile,NewPitch,CommentForm
 from .. import db
 
 
@@ -12,6 +12,7 @@ def index():
     title= "home"
 
     pitches = Pitch.get_all_pitch()
+    
 
     return render_template("index.html", title=title,pitches = pitches)
 
@@ -75,7 +76,7 @@ def new_comment(id):
         new_comment.save_comment()
         return redirect(url_for('.pitch',id = pitch.id))
 
-    title = f'{pitch.title} comment'
+    title = f'{pitch.pitch_title} comment'
     return render_template('comment.html',title = title, comment_form = form,pitch = pitch)
 
 @main.route('/pitch/<id>')
@@ -83,5 +84,5 @@ def new_comment(id):
 def pitch(id):
     pitch = Pitch.query.filter_by(id = id).first()
 
-    comment = Comment.get_pitch_comment(id)
+    comment = Comment.get_pitch_comment(pitch.id)
     return render_template('pitch.html',pitch = pitch, comment = comment)

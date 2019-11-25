@@ -72,11 +72,14 @@
                 {% for pitch in pitches %}
                     <div class="col-md 4">
                         <div class="card">
+                            <div class="card-header">
+                                <p>{{pitch.category}}</p>
+                            </div>
                             <div class="card-body">
                                 <p> {{pitch.pitch_body}} </p>
                             </div>
                             <div class="card-footer">
-                                <a href="">Write a comment</a>
+                                <a href="/pitch/{{pitch.id}}">Write a comment</a>
                                 
                             </div>
                         </div>
