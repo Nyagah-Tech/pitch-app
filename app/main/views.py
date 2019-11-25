@@ -1,9 +1,9 @@
-from flask import render_template,abort,redirect,url_for
+from flask import render_template,abort,request,redirect,url_for
 from . import main
 from flask_login import login_required, current_user
 from ..models import User,Pitch,Comment
 from .forms import UpdateProfile,NewPitch,CommentForm
-from .. import db
+from .. import db,photos
 
 
 @main.route('/')
@@ -12,9 +12,12 @@ def index():
     title= "home"
 
     pitches = Pitch.get_all_pitch()
-    
+    business = Pitch.get_pitch_category("Business")
+    sport = Pitch.get_pitch_category("Sport")
+    education = Pitch.get_pitch_category("Educational")
+    religious = Pitch.get_pitch_category("Religious")
 
-    return render_template("index.html", title=title,pitches = pitches)
+    return render_template("index.html",business = business,sport = sport,education = education,religious = religious ,title=title,pitches = pitches)
 
 
 @main.route('/user/<uname>')
@@ -86,3 +89,15 @@ def pitch(id):
 
     comment = Comment.get_pitch_comment(pitch.id)
     return render_template('pitch.html',pitch = pitch, comment = comment)
+
+
+@main.route('/user/<uname>/update/pic', methods = ['Post'])
+@login_required
+def update_pic(uname):
+    user = User.query.filter_by(username = uname).first()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photo/{filename}'
+        user.profile_path = path
+        db.session.commit()
+    return redirect(url_for('main.profile',uname = uname))
