@@ -21,7 +21,7 @@
         }
         p{
             
-            color:white;
+            color:black;
             font-size: 25px;
         }
 
@@ -58,7 +58,7 @@
             </div>
         </div><br><br><br>
         {% if user == current_user%}
-            <a href=" {{url_for('main.update_profile',uname = user.username)}}">Edit profile</a>
+            <button class="btn btn-primary"><a href=" {{url_for('main.update_profile',uname = user.username)}}"><b style="color:white;font-size: 30px;">Edit profile</b></a></button>
         {% endif%}
 
         <center><p>pitches</p></center>
@@ -68,10 +68,11 @@
                     <div class="col-md-3" style="margin-bottom:60px;">
                         <div class="card">
                             <div class="card-title">
-                                {{pit.pitch_title}}
+                                <p><i>pitch title</i> {{pit.pitch_title}}</p>
                             </div>
                             <div class="card-body">
-                                {{pit.pitch_body}}
+                                <p>{{pit.pitch_body}}</p>
+                                <p><i>posted on</i> {{pit.posted}}</p>
                             </div>
                         </div>
                     </div>

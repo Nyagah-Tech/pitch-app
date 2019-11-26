@@ -13,7 +13,7 @@
         body {
             margin: 0;
             background-color: black;
-            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.setaswall.com%2Fwp-content%2Fuploads%2F2017%2F07%2FBlack-Wallpapers-14-1440-x-900.png&f=1&nofb=1);
+            background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.setaswall.com%2Fwp-content%2Fuploads%2F2017%2F07%2FBlack-Wallpapers-14-1440-x-900.png&f=1&nofb=1");
             background-size: contain;
         
         }
@@ -23,7 +23,7 @@
             margin: 0;
             padding: 0;
             width: 15%;
-            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.oJDHeDvGYhULfNxvkyBwygHaNK%26pid%3DApi&f=1);
+            background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.oJDHeDvGYhULfNxvkyBwygHaNK%26pid%3DApi&f=1");
             background-size: cover;
             background-repeat: no-repeat;
             background-color: rgb(100, 6, 6);
@@ -78,8 +78,8 @@
                     <li><a href="">PitchApp</a></li>
                     
                     <li><a class="active" href="/">Home</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#about">About</a></li>
+                    
+                    
                     
                     {% if current_user.is_authenticated%}
                     <li style="color:black;padding: 15px;">{{current_user.username}}</li>

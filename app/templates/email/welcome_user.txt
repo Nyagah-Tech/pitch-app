@@ -1,0 +1,4 @@
+Hello {{user.username}}
+Welcome to the pitch app.
+Thank you for signing up on our pitch up application.We highly welcome you to our society. we hope that the services we offer will meet your expectations.
+

@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf%}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type='text/css' href="{{url_for('static',filename = 'css/index.css')}}">
+{% endblock styles %}
 {% block content%}
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-md-8"> 
+            <center><h1 style="color:silver; font-size:90px;"><b>Register</b></h1></center><br>
+        
                 {{wtf.quick_form(registration_form)}}
-            </div>
+            
         </div>
         <div class="col-md-2"></div>
     </div>

@@ -7,16 +7,24 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
     <title>Document</title>
     <style>
-        body {
+         body {
             margin: 0;
+            background-color: black;
+            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.setaswall.com%2Fwp-content%2Fuploads%2F2017%2F07%2FBlack-Wallpapers-14-1440-x-900.png&f=1&nofb=1);
+            background-size: contain;
+            color:white;
+            font-size: 35px;
         }
         
         ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
-            width: 25%;
-            background-color: #f1f1f1;
+            width: 15%;
+            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.oJDHeDvGYhULfNxvkyBwygHaNK%26pid%3DApi&f=1);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: rgb(100, 6, 6);
             position: fixed;
             height: 100%;
             overflow: auto;
@@ -24,21 +32,46 @@
         
         li a {
             display: block;
-            color: #000;
+            color: silver;
             padding: 8px 16px;
             text-decoration: none;
         }
         
         li a.active {
-            background-color: #4CAF50;
+            background-color: rgb(11, 11, 36);
             color: white;
         }
         
         li a:hover:not(.active) {
-            background-color: #555;
+            background-color: rgba(0, 0, 0, 0.767);
             color: white;
         }
-        
+        h1{
+            color:rgb(177, 177, 177);
+            font-size: 70px;
+            font-family: 'Playfair Display SC', serif;
+        }
+        .card{
+            background-color: rgb(87, 83, 83);
+            color: black;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        .card-header{
+            background-color: black;
+            color:white;
+            font-size: 25px;
+        }
+        h3{
+            color:rgb(233, 233, 233);
+            font-size: 40px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .card-footer{
+            background-color: black;
+            color:silver;
+            font-size: 25px;
+        }
     </style>
 </head>
 <body>
@@ -49,10 +82,8 @@
                     <li><a href="">PitchApp</a></li>
                     
                     <li><a class="active" href="/">Home</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#about">About</a></li>
-                    <a href="/pitch/new/{{current_user.username}}"> Add new pitch</a>
                     {% if current_user.is_authenticated%}
+                    <li><a href="/pitch/new/{{current_user.username}}"> Add new pitch</a></li>
                     <li style="color:black;padding: 15px;">{{current_user.username}}</li>
                     <li> <a href="{{url_for('main.profile',uname = current_user.username)}}">Profile</a> </li>
                     
@@ -65,40 +96,38 @@
         
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9" style="margin-top: 20px">
+            <p> The {{pitch.title}} pitch</p>
             <div class="row">
                     <div class="col-md 4">
                         <div class="card">
                             <div class="card-body">
                                 <p> {{pitch.pitch_body}} </p>
-                                <p>{{pitch.user}}</p>
+                                <center><p><i>posted by </i>{{pitch.user}}</p></center>
                             </div>
 
                             <div class="card-footer">
-                                
+                                <p>posted on {{pitch.posted}}</p>
                                 
                             </div>
                         </div>
                     </div>
             </div>
             <p>comments</p>
-            <p> <a href="/pitch/comment/new/{{pitch.id}}">add comment</a> </p>
-            <ul>
+            <p> <button><a href="/pitch/comment/new/{{pitch.id}}">add comment</a> </button></p>
+            
                 {% for com in comment %}
-                    <li>
+                    
                         <div class="card">
                             <p>{{com.comment}}</p>
                             
-
-                            <div class="card-footer">
-                                <p>{{com.user}}</p>
-                                <p>{{com.posted}}</p>
-                            </div>
+                            <p><i>posted by</i> {{com.user}} <i>on </i> {{com.posted}}</p>
+                            
                         </div>
-                    </li>
+                    
                 {% endfor%}
 
-            </ul>
+             
             
         </div>
     </div>
