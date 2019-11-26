@@ -1,7 +1,8 @@
 # pitch-app
 this is an application that enables a user to upload a  quote to the pitch app society.the users have the capability of voting and commenting on the pitches as they want.
-##Author
+## Author
 Nyagah-Tech
+## Description
 Pitch-App this is an application that enables a user to upload a  quote to the pitch app society.the users have the capability of voting and commenting on the pitches as they want.
 ## Installation Requirements
 Clone this repository in your termiminal`$ git clone https://github.com/Nyagah-Tech/pitch-app.git``
@@ -46,14 +47,14 @@ $ pip install -r requirements.txt
     WTForms==2.2.1
 
   ## Technologies Used to make the apllication
-    Python3 
-    Flask Framework
-    Postgressql
-    HTML, CSS and Bootstrap
-    Heroku
+    * Python3 
+    * Flask Framework
+    * Postgressql
+    * HTML, CSS and Bootstrap
+    * Heroku
   ## BDD
-     A user can create an account and login with the credentials he signed in with.
-     A user can comment on a pitch of his choosing
-     A user can create a pitch of different categories and post them
+     * A user can create an account and login with the credentials he signed in with.
+     * A user can comment on a pitch of his choosing
+     * A user can create a pitch of different categories and post them
 ## Known Bugs
     No known bugs have been experienced or noted by our developer team..for any bug please contact our team at danmuv12@gmail.com
