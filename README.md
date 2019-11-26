@@ -1,5 +1,6 @@
 # pitch-app
 this is an application that enables a user to upload a  quote to the pitch app society.the users have the capability of voting and commenting on the pitches as they want.
+The live link to the site is https://pitch-hub.herokuapp.com/
 ## Author
 Nyagah-Tech
 ## Description
